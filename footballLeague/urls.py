@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 	url(r'^stadium/(?P<idaux>\d+)/$', stadiumModel),
     url(r'^coach/(?P<idaux>\d+)/$', coachModel),
 	url(r'^team/(?P<idaux>\d+)/$', teamModel),
-	url(r'^league/(?P<idaux>\d+)/$', leagueModel),
+	url(r'^league/(?P<idaux>\d+)/$', leagueModel, name ='League Details"'),
 	url(r'^referee/(?P<idaux>\d+)/$', refereeModel),	
 	url(r'^match/(?P<idaux>\d+)/$', matchModel),
 #CREATE

@@ -231,5 +231,13 @@ class Create(CreateView):
 class Delete(DeleteView):
 	template_name = 'delete.html'
 
-
+def review(request, pk):
+    league = get_object_or_404(League, pk=pk)
+    review = LeagueReview(
+        rating=request.POST['rating'],
+        comment=request.POST['comment'],
+        user=request.user,
+        league=league)
+    review.save()
+    return HttpResponseRedirect(urlresolvers.reverse('League Details', args=(league.id,)))
 

@@ -106,3 +106,12 @@ class Match(models.Model):
 	def get_absolute_url(self):
 		return reverse('List of Matches')
 
+class Review(models.Model):
+    RATING_CHOICES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'))
+    rating = models.PositiveSmallIntegerField('Ratings (stars)', blank=False, default=3, choices=RATING_CHOICES)
+    comment = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(User, default=User.objects.get(id=1))
+    date = models.DateField(default=date.today)
+
+class LeagueReview(Review):
+    league = models.ForeignKey(League)
