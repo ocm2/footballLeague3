@@ -1,0 +1,20 @@
+{% extends "mainpage.html"  %}
+{% block content %}
+<html>
+	<body>
+		<p><input type="button" value="<-- Return Previous List" onClick= location.href="/teamsList" /></p>
+		<h1>{{ title }}: {{team.name}}</h1>
+		 
+			<li> Name: {{team.name}}</li>
+			<li> Foundation Year: {{team.foundationYear}}</li>
+			<li> Stadium: {{team.stadium.name}}<input type="button" value="+Details" onClick= location.href="/stadium/{{team.stadium.id}}/" /> </li>
+			<li> Coach: {{team.coach.name}}<input type="button" value="+Details" onClick= location.href="/coach/{{team.coach.id}}/" /> </li>
+			<li> Players: </li>		
+			<ul>{% for p in team.players.all %}
+					<li>{{p.name}}<input type="button" value="+Details" onClick= location.href="/player/{{p.id}}/" /> </li>
+				{% endfor %} 
+			</ul>
+
+	</body>
+<html>
+{% endblock %}

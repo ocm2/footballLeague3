@@ -1,0 +1,108 @@
+<!--
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution License
+	Name       : Eponymous
+	Version    : 1.0
+	Released   : 20130222
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Eponymous by FCT</title>
+        <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+		<div id="bg">
+			<div id="outer">
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="#">{{ pagetitle }}</a>
+						</h1>
+					</div>
+					<div id="nav">
+<!--						<ul>
+							<li class="first active">
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="#">Services</a>
+							</li>
+							<li>
+								<a href="#">Blog</a>
+							</li>
+							<li>
+								<a href="#">Portfolio</a>
+							</li>
+							<li>
+								<a href="#">About</a>
+							</li>
+							<li class="last">
+								<a href="#">Contact</a>
+							</li>
+						</ul>
+-->
+						<br class="clear" />
+
+					</div>
+				</div>
+				<div id="banner">
+					<img src="images/pic1.jpg" width="1120" height="200" alt="" />
+				</div>
+				<div id="main">
+					<div id="sidebar">
+
+
+						{% if user.username %}
+						<h3>Actual user: {{ user.username }}</h3>
+						{% else %}
+						<h3>Welcome:
+						Enter with your acount please: <a href="/login/">sign in</a></h3>
+						{% endif %}
+
+						<ul class="linkedList">
+							<li class="first">
+								List of Leagues:<input type="button" value="Leagues List" onClick= location.href="/leaguesList/" />
+							</li>
+							<li>
+								List of Teams:<input type="button" value="Teams List" onClick= location.href="/teamsList/" />
+							</li>
+							<li>
+								List of Coachs:	<input type="button" value="Coachs List" onClick= location.href="/coachsList/" />
+							</li>
+							<li>
+								List of Representatives:
+									<input type="button" value="Representatives List" onClick= location.href="/representativesList/" />
+							</li>
+							<li>
+								List of Stadiums:<input type="button" value="Stadiums List" onClick= location.href="/stadiumsList/" />
+							</li>
+							<li>
+								List of Referees:<input type="button" value="Referees List" onClick= location.href="/refereesList/" />
+							</li>
+						<li class="last">
+								List of Matches:<input type="button" value="Matches List" onClick= location.href="/matchesList/" />
+							</li>
+						</ul>
+					</div>
+					<div id="content">
+						<div id="box1">
+							
+						</div>
+
+						<br class="clear" />
+					</div>
+					<br class="clear" />
+				</div>
+
+			</div>
+			<div id="copyright">
+				&copy; Football League App | Design by Oriol Capell and Jordi Niubó</a>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "mainpage.html"  %}
+
+{%block  content%}
+{% if user.username %}
+	<form method="post" action="">
+	{% csrf_token %}
+	<table>
+	{{form.as_table }}
+	</table>
+	<input	type="submit" value="Submit" >
+</form>
+{% else %}
+		<p>You have not loged in:
+		Please, <a href="/login/">sign in</a>
+		</p>
+	{% endif %}
+{%endblock%}

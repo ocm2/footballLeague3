@@ -1,0 +1,14 @@
+{% extends "mainpage.html"  %}
+{% block content %}
+<html>
+	<body>
+		<p><input type="button" value="<-- Return Previous List" onClick= location.href="/coachsList" /></p>
+		<h1>{{ title }}: {{coach.name}}</h1>
+		<ul> 
+			<li> Name: {{coach.name}}</li>
+			<li> Nacionality: {{coach.nacionality}}</li>
+			<li> Age: {{coach.age}}</li>
+		</ul>
+	</body>
+<html>
+{% endblock %}

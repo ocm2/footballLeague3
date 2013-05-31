@@ -1,0 +1,12 @@
+from django.forms import ModelForm	
+from models	import *
+
+class StadiumForm(ModelForm):	
+  class	Meta:
+	  model	= Stadium
+	  exclude = ('user', 'date',)	
+
+class Form(ModelForm):	
+  class	Meta:
+	  model	= Stadium
+	  exclude = ('user', 'date',)	

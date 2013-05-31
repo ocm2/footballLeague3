@@ -1,0 +1,18 @@
+{% extends "mainpage.html"  %}
+{% block content %}
+<html>
+	<body>
+		<h1>{{ title }} <input type="button" value="Add" onClick= location.href="{{route}}{{route_create}}" /></h1>
+		<ul> 
+		{% for i in items %}
+		<li>
+			{{i.day}} - {{i.numOfMatch}}
+			<input type="button" value="+Details" onClick= location.href="{{route}}{{i.id}}/" />
+			<input type="button" value="Edit" onClick= location.href="{{route}}{{i.id}}{{route_edit}}" />
+			<input type="button" value="Delete" onClick= location.href="{{route}}{{i.id}}/delete" />
+		</li>
+		{% endfor %}
+		</ul>
+	</body>
+<html>
+{% endblock %}

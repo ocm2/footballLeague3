@@ -1,0 +1,13 @@
+{% extends "mainpage.html"  %}
+{% block content %}
+<html>
+	<body>
+		<p><input type="button" value="<-- Return Previous List" onClick= location.href="/refereesList" /></p>
+		<h1>{{ title }}: {{ref.name}}</h1>
+		<ol> 
+			<li> Name: {{ref.name}}</li>
+			<li> Age: {{ref.age}}</li>
+		</ol>
+	</body>
+<html>
+{% endblock %}
