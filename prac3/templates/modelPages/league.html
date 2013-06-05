@@ -1,6 +1,8 @@
 {% extends "mainpage.html"  %}
 {% block content %}
-<html>
+
+<span vocab="http://schema.org/" typeof="League">
+	<html>
 	<body>
 		<p><input type="button" value="<-- Return Previous List" onClick= location.href="/leaguesList" /></p>
 		<h1>{{ title }}: {{league.name}}</h1>
@@ -12,7 +14,56 @@
 				<li>{{t.name}}<input type="button" value="+Details" onClick= location.href="/team/{{t.id}}/" /></li>
 				{% endfor %} 
 			</ul>
+		</body>
+	<html>
+	<h2>Reviews</h2>
+	{% if league.leaguereview_set.all|length > 0 %}
+	<span rel="aggregateRating">
+		<p typeof="AggregateRating">
+			Average rating
+			<span property="ratingValue">{{ league.averageRating|stringformat:".1f" }}</span>
+			{% with league.leaguereview_set.all|length as reviewCount %}
+				from <span property="reviewCount">{{ reviewCount }}
+				</span> review{{ reviewCount|pluralize }}
+			{% endwith %}
+		</p>
+	</span>
+	
+	<ul rel="review">
+	{% for review in league.leaguereview_set.all %}
+	<li typeof="Review">
+		<p rel="reviewRating" typeof="Rating">
+			<span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
+			<span property="ratingValue">{{ review.rating }}</span>
+			star{{ review.rating|pluralize }}
+			{% with RATING_CHOICES|last as best %}
+			<span property="bestRating" content="{{ best.0 }}"></span>
+			{% endwith %}
+		</p>
+		<p property="description">{{ review.comment }}</p>
+		<p>Created by <span property="author">{{ review.user }}</span> on
+		<span property="publishDate">{{ review.date}}</span></p>
+	</li>
+	{% endfor %}
+	</ul>
+	</span>
+	{% endif %}
+	<h3>Add Review</h3>
+	<form action="/league/" method="post">
+		{% csrf_token %}
+		Message: <textarea name="comment" id="Comment" rows="4"></textarea>
+		<p>Rating:</p>
+		<p>	
+		{% for rate in RATING_CHOICES %}
+			<input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
+			<label for="choice{{ forloop.counter }}">{{ rate.1 }} 
+star{{ rate.0|pluralize }}</label><br />
+		{% endfor %}
+		</p>
+		<input type="submit" value="Review" />
+	</form>
+{% endblock %}
 
-	</body>
-<html>
+{% block footer %}
+	Created by {{ league.user }} on {{ league.date }}
 {% endblock %}

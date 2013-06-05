@@ -159,15 +159,14 @@ def leaguesList(request):
 
 	return general(request, 'list', variables)	
 
-def leagueModel(request, idaux):
-	league = League.objects.get(id = idaux)
-	template = get_template('modelPages/league.html')
-	variables = Context({
-		'title': 'Information of League',
-		'titlehead': 'Information of League',
-		'league': league,
-	})
-	return general(request, template, variables)
+class LeagueModel(DetailView):
+    model = League
+    template_name = 'modelPages/league.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LeagueModel, self).get_context_data(**kwargs)
+        context['RATING_CHOICES'] = LeagueReview.RATING_CHOICES
+        return context
 
 def refereesList(request):
 	referees = Referee.objects.all()
@@ -239,5 +238,5 @@ def review(request, pk):
         user=request.user,
         league=league)
     review.save()
-    return HttpResponseRedirect(urlresolvers.reverse('League Details', args=(league.id,)))
+    return HttpResponseRedirect(reverse('/league/', args=(league.id,)))
 
