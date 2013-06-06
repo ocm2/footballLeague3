@@ -2,13 +2,16 @@
 {% block content %}
 <html>
 	<body>
+		<ul>
 		<p><input type="button" value="<-- Return Previous List" onClick= location.href="/coachsList" /></p>
-		<h1>{{ title }}: {{coach.name}}</h1>
-		<ul> 
-			<li> Name: {{coach.name}}</li>
-			<li> Nacionality: {{coach.nacionality}}</li>
-			<li> Age: {{coach.age}}</li>
+		<span vocab="http://schema.org/" typeof="Coach">
+		<span property="name"><p><b>Name:</b> {{coach.name}}</p></span>
+		<span property="age"><p><b>Nacionality:</b> {{coach.nacionality}}</p></span>
+		<span property="gender"><p><b>Age:</b> {{coach.age}}</p></span>
+		</span>
 		</ul>
 	</body>
 <html>
 {% endblock %}
+
+
