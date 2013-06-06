@@ -49,7 +49,7 @@
 	</span>
 	{% endif %}
 	<h3>Add Review</h3>
-	<form action="/league/" method="post">
+	<form action="reviews/create/" method="post">
 		{% csrf_token %}
 		Message: <textarea name="comment" id="Comment" rows="4"></textarea>
 		<p>Rating:</p>

@@ -1,4 +1,5 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
@@ -238,5 +239,5 @@ def review(request, pk):
         user=request.user,
         league=league)
     review.save()
-    return HttpResponseRedirect(reverse('/league/', args=(league.id,)))
+    return HttpResponseRedirect(reverse('League Details', args=(league.id,)))
 

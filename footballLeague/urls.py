@@ -54,7 +54,7 @@ urlpatterns = patterns('',
 	url(r'referee/(?P<pk>\d+)/delete$' ,Delete.as_view(success_url = '/refereesList/',model = Referee)),
 	url(r'match/(?P<pk>\d+)/delete$' ,Delete.as_view(success_url = '/matchesList/',model = Match)),
 
-
+    url(r'league/(?P<pk>\d+)/reviews/create/$', 'prac3.views.review', name='review_create'),
 
 	#url(r'^user/(\w+)/$', userpage),
 	url(r'^login/$', 'django.contrib.auth.views.login'),
