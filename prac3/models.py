@@ -75,6 +75,15 @@ class League(models.Model):
 	date = models.DateField(default=date.today)
 	user = models.ForeignKey(User)
 
+	def averageRating(self):
+		totalsum = 0.0
+		totalreviews = 0
+		for review in self.leaguereview_set.all():
+			totalsum += review.rating
+			totalreviews += 1
+		average = totalsum/totalreviews
+		return average	
+
 	def __unicode__(self):
 		return self.name
 	def get_absolute_url(self):
